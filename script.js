@@ -14,7 +14,10 @@ const data = [
     image: "./img/food.jpg",
     text: "I'm Hungry",
   },
-
+  {
+    image: "./img/tired.jpg",
+    text: "I'm Tired",
+  },
   {
     image: "./img/hurt.jpg",
     text: "I'm Hurt",
@@ -27,7 +30,10 @@ const data = [
     image: "./img/angry.jpg",
     text: "I'm Angry",
   },
-
+  {
+    image: "./img/sad.jpg",
+    text: "I'm Sad",
+  },
   {
     image: "./img/scared.jpg",
     text: "I'm Scared",
