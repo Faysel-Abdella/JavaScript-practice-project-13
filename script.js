@@ -67,10 +67,23 @@ function createBox(item) {
     <p class="info">${text}</p>
   `;
 
-  // @todo - speak event
+  // To speak when the user click the box
+  box.addEventListener("click", () => {
+    setTextMessage(text);
+    speakText();
+
+    // Add active effect
+    box.classList.add("active");
+    setTimeout(() => {
+      box.classList.remove("active");
+    }, 800);
+  });
 
   main.appendChild(box);
 }
+
+// Init speech synth
+const message = new SpeechSynthesisUtterance();
 
 // Store voices
 let voices = [];
@@ -88,6 +101,23 @@ function getVoices() {
   });
 }
 
+// Set text
+function setTextMessage(text) {
+  message.text = text;
+}
+
+// Speak test
+function speakText() {
+  speechSynthesis.speak(message);
+}
+
+// Set voice when select from selected list
+function setVoice(e) {
+  message.voice = voices.find((voice) => {
+    voice.name === e.target.value;
+  });
+}
+
 // EVENTS
 
 // Voices changed
@@ -102,5 +132,8 @@ toggleBtn.addEventListener("click", () =>
 closeBtn.addEventListener("click", () =>
   document.getElementById("text-box").classList.remove("show")
 );
+
+// Event on select list to change voice
+voicesSelect.addEventListener("change", setVoice);
 
 getVoices();
